@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+
+    <div id="heading" class="box">
+        <h1>
+            <%= listTitle %>
+        </h1>
+    </div>
+
+    <div class="box">
+        <% newListItemArray.forEach(function(arrayItems){ %>
+           
+                <form action="/delete" method="post">
+                    <div class="item">
+                    <input type="checkbox" onchange="this.form.submit()" name="checkbox" value="<%=arrayItems._id%>">
+                    <p>
+                        <%=arrayItems.item%>
+                    </p>
+                </div>
+                <input type="hidden" name="listName" value="<%=listTitle%>">
+                </form>
+                
+           
+            <% }) %>
+
+
+                <form action="/" method="post">
+                    <input type="text" name="newItem" placeholder="New Item...">
+                    <button type="submit" name="addWhere" value="<%=listTitle%>">+</button>
+                </form>
+    </div>
+
+</body>
+
+</html>
